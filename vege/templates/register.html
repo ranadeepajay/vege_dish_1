@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block start %}
+  
+ 
+<h1> hello this this Register page</h1>
+
+
+
+<div class="container mt-5">
+  
+   <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+
+    
+
+
+     <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">first name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name='first_name' aria-describedby="emailHelp">
+      
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">last name </label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name='last_name' aria-describedby="emailHelp">
+        
+      </div>
+     
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">username</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" name='username' aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        
+
+          <p>already have account <a href="/login/">login</a></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+     
+   
+  </form>
+
+</div>
+   
+{% endblock  %}

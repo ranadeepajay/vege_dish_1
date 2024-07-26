@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+
+{% block start %}
+
+
+
+<h1>this is dishes page</h1>
+
+{{dishes}}
+
+<div class="container mt-5">
+  
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+     <div class="mb-3">
+       <label for="exampleInputEmail1" class="form-label">dish name</label>
+       <input name="dish_name" type="text" class="form-control" required>
+     </div>
+     <div class="mb-3">
+       <label for="exampleInputPassword1" class="form-label">dish description </label>
+       <textarea name="dish_description" class="form-control" required></textarea>
+     </div>
+     <div class="mb-3">
+         <label for="exampleInputPassword1" class="form-label">dish Image </label>
+         <input name="dish_image" type="file" class="form-control" >
+       </div>
+    
+     <button type="submit" class="btn btn-primary">ADD dish</button>
+   </form>
+
+</div>
+
+
+
+<table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">id </th>
+        <th scope="col">dish_name</th>
+        <th scope="col">dish_description</th>
+        <th scope="col">dish_image</th>
+        <th scope="col">actions</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for dish in dishes %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{dish.dish_name}}</td>
+        <td>{{dish.dish_description}}</td>
+        <td>
+            <img src="/media/{{dish.dish_image}}" style="height:100px ;">
+        
+        </td>
+        <td>
+            <a href="/delete_dishes/{{dish.id}}" class="btn btn-danger m-2">delete</button>
+                <a href="/update_dishes/{{dish.id}}" class="btn btn-success m-2">update</button>
+                
+        </td>
+       
+            
+        
+      </tr>
+   
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+{% endblock  %}
